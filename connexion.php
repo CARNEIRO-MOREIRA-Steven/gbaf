@@ -11,7 +11,7 @@
 <?php include('extensions/header.php');
 ?>
 <h1 class="connexion">Connexion</h1>
-    <form method="post" action="config.php" >
+    <form method="post" action="connexion_traitement.php" >
         <fieldset>
             <legend>Se connecter</legend>
         <label>Username</label> : <input type="text" name="username" required><br>

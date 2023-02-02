@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="comment_count">
-    <p>X Commentaires</p>
+    <p><?php echo" Commentaires" .$nbre_commentaires;?></p>
     <button class="new_comment_btn">Nouveau commentaire</button>
     <button class="like-btn"><i class="fa fa-thumbs-up"></i></button>
     <button class="dislike-btn"><i class="fa fa-thumbs-down"></i></button>

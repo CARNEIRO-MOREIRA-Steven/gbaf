@@ -19,13 +19,13 @@
         <label>Username</label> : <input type="text" name="username" id="username" required><br>
         <label>Password</label> : <input type="password" name="password" id="password" required><br>
         <label>Question secrète</label> : 
-<select name="my_html_select_box" id="question-select">
+<select name="question" id="question-select">
 	<option value="père">Nom de votre père</option>
 	<option value="animal">Nom de votre animal de compagnie</option>
 	<option value="ville">Ville de naissance</option>
 </select>
         <label>Réponse</label> : <input type="text" name="reponse" id="reponse" required><br></p>
-        <input type="submit" name="inscription" value="S'inscrire">
+        <input type="submit" value="S'inscrire">
         <button id="retour" onclick="window.location.href='index.php'">Retour</button>
         </fieldset></form>
 </body>

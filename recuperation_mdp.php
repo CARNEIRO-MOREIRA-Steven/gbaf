@@ -1,8 +1,4 @@
-<?php 
-if(isset($_POST['valider'])){
-    if (empty($_POST['username']) and !empty($_POST['password']));
-}
-    ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
