@@ -15,5 +15,5 @@ if (!empty($_POST)) {
     } else {
         echo "Nom d'utilisateur ou mot de passe incorrect <br> <a href='index.php'>Retour à la page d'accueil</a>";
     }
-}
+} 
 ?>
