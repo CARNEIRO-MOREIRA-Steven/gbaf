@@ -1,39 +1,19 @@
 <?php
 session_start();
-require('config.php');
-if(isset($_POST['username']) && isset($_POST['password']))
-{
 
- // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
- // pour éliminer toute attaque de type injection SQL et XSS
- $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
- $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-  
- if($username !== "" && $password !== "")
- {
- $requete = "SELECT count(*) FROM utilisateur where 
- nom_utilisateur = '".$username."' and mot_de_passe = '".$password."' ";
- $exec_requete = mysqli_query($db,$requete);
- $reponse = mysqli_fetch_array($exec_requete);
- $count = $reponse['count(*)'];
- if($count!=0) // nom d'utilisateur et mot de passe correctes
- {
- $_SESSION['username'] = $username;
- header('Location: acceuil.php');
- }
- else
- {
- header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
- }
- }
- else
- {
- header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
- }
+require('config.php');
+
+if (!empty($_POST)) {
+    $check = $conn->prepare("SELECT username, password FROM account WHERE username=?");
+    $check->execute(array($_POST['username']));
+    $compte_user = $check->fetch();
+
+    if ($compte_user && password_verify($_POST['password'], $compte_user['password'])) {
+        $_SESSION['username'] = $compte_user['username'];
+        header('Location: acceuil.php');
+        exit;
+    } else {
+        echo "Nom d'utilisateur ou mot de passe incorrect <br> <a href='index.php'>Retour à la page d'accueil</a>";
+    }
 }
-else
-{
- header('Location: login.php');
-}
-mysqli_close($db); // fermer la connexion
 ?>
