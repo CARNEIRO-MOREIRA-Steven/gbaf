@@ -1,0 +1,41 @@
+.page{text-align: center;
+border-top: solid;
+padding: 30px;
+margin-top: 30px;}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nom_compte {
+    margin-top: 40px;
+}
+
+#logo {
+    border: solid 3px;
+    height: 100px;
+    width: 100px;
+    margin: 30px;
+}
+
+.footer {
+    border-top: solid;
+    text-align: center;
+    margin-top: 15px;
+    padding: 50px;
+    font-size: 15px;
+}
+@media screen and (max-width: 760px)
+
+/*Resposive Téléphone*/
+    {.header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nom_compte {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }}

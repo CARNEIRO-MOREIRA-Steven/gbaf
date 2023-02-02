@@ -1,0 +1,333 @@
+.connexion,
+.inscription {
+    text-align: center;
+    font-size: 25px;
+}
+
+.gbaf {
+    border-top: solid 3px;
+    border-bottom: solid 3px;
+    margin-top: 20px;
+}
+
+
+#logo {
+    border: solid 3px;
+    height: 100px;
+    width: 100px;
+    margin: 30px;
+}
+
+.conteneur {
+    border: solid 3px;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+button {
+    float: right;
+}
+
+.element1,
+.element2,
+.element3,
+.element4 {
+    border: solid 3px;
+    margin: 20px;
+    padding: 20px;
+    display: block;
+
+}
+
+.img1 {
+    margin-top: 15px;
+}
+
+.acteurtxt {
+   display: block;
+}
+
+img {
+    border: solid 3px;
+    width: 150px;
+    height: 60px;
+}
+
+.formation_co,
+.dsa_france,
+.protectpeople,
+.cde {
+    border: solid 3px;
+    margin: 20px;
+    padding: 20px;
+
+}
+
+.button1 {
+    position: relative;
+    bottom: 15px;
+    border-radius: 5px;
+}
+
+h2,
+p,
+ul {
+    text-align: left;
+}
+
+fieldset {
+    border: solid;
+    margin: auto;
+    text-align: center;
+    width: 400px;
+    height: 480px;
+    font-size: 20px;
+}
+
+legend {
+    border: solid;
+    vertical-align: middle;
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nom_compte {
+    margin-top: 40px;
+}
+
+.divimg1 {
+
+    float: left;
+}
+
+.divimg2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_acteur {
+    margin-top: 50px;
+    width: 300px;
+    height: 130px;
+}
+
+.txt_acteur {
+    margin-top: 50px;
+}
+
+.comment_count {
+    border: solid;
+    display: block;
+    font-size: 20px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.comment_section {
+    border: solid 2px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.new_comment_btn {
+    position: relative;
+    right: 100px;
+    bottom: 65px;
+}
+
+.like-btn {
+    position: relative;
+    right: -90px;
+    bottom: 65px;
+}
+
+.dislike-btn {
+    position: relative;
+    right: -150px;
+    bottom: 65px;
+}
+
+.footer {
+    border-top: solid;
+    text-align: center;
+    margin-top: 15px;
+    padding: 50px;
+    font-size: 15px;
+}
+
+
+@media screen and (max-width: 760px)
+
+/*Resposive Téléphone*/
+    {
+    .conteneur {
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }
+
+    .element1,
+    .element2,
+    .element3,
+    .element4 {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .img1 {
+        width: 300px;
+        border: solid 3px;
+        align-items: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .divimg1 {
+        justify-content: center;
+        display: flex;
+        float: none;
+    }
+
+    .button1 {
+        position: relative;
+        bottom: 22px;
+    }
+
+    .protectpeople {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .formation_co {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .dsa_france {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .cde {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    p {
+        padding-bottom: 10px;
+    }
+
+    p,
+    h3 {
+        text-align: left;
+    }
+
+    fieldset {
+        border: solid;
+        text-align: center;
+        margin: auto;
+        width: 150px;
+        height: 550px;
+        font-size: 20px;
+    }
+
+    label,
+    input {
+        font-size: 20px;
+    }
+
+    .inscription,
+    .connexion {
+        font-size: 20px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nom_compte {
+        margin-top: 20px;
+    }
+
+    .new_comment_btn{
+        right: -10px;
+    }
+
+    .like-btn{
+        bottom: 40px;
+    }
+
+    .dislike-btn{
+        bottom: 40px;
+    }
+    
+    .comment_count{
+        margin: 10px;
+    }
+
+}
+
+@media screen and (min-width:768px) and (max-width:1023px)
+
+/*Responsive Tablette*/
+    {
+
+    h1,
+    h2 {
+        text-align: left;
+    }
+
+    .img1{margin-top: 20px;}
+
+    main {
+        border-bottom: solid;
+        padding: 15px;
+    }
+
+    .footer {
+        margin-top: 50px;
+        font-size: 20px;
+    }
+
+    .element1,.element2,.element3,.element4{
+        height: 100px;
+    }
+
+    .gbaf{
+        margin-top: 0px
+    }
+
+}
+
+
+
+@media screen and(min-width:1024px)
+
+/*Responsive PC*/
+    {
+
+    h1,
+    h2,
+    p {
+        text-align: left;
+    }
+
+}
