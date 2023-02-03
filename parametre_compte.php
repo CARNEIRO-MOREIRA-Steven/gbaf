@@ -13,17 +13,17 @@
     <form method="post" action="parametre_compte_traitement.php">
         <fieldset>
         <legend>Vos Coordonnées</legend>
-        <label>Nom</label> : <input type="text" name="nom" id="nom"><br>
-        <label>Prenom</label> : <input type="text" name="prenom" id="prenom"><br>
-        <label>Username</label> : <input type="text" name="username" id="username"><br>
-        <label>Password</label> : <input type="password" name="password" id="password"><br>
+        <label>Nom</label> : <input type="text" name="nom" id="nom"required><br>
+        <label>Prenom</label> : <input type="text" name="prenom" id="prenom"required><br>
+        <label>Username</label> : <input type="text" name="username" id="username"required><br>
+        <label>Password</label> : <input type="password" name="password" id="password"required><br>
         <label>Question secrète</label> : 
 <select name="question" id="question-select">
 	<option value="père">Nom de votre père</option>
 	<option value="animal">Nom de votre animal de compagnie</option>
 	<option value="ville">Ville de naissance</option>
 </select>
-        <label>Réponse</label> : <input type="text" name="reponse" id="reponse"<br></p>
+        <label>Réponse</label> : <input type="text" name="reponse" id="reponse"required<br></p>
         <input type="submit" value="Modifier"> 
     </fieldset>
     </form>

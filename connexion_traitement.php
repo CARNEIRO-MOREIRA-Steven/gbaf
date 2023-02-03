@@ -9,7 +9,7 @@ if (!$result) {
 } else {
     $compte_user = $check->fetch();
     if ($compte_user && password_verify($_POST['password'], $compte_user['password'])) {
-        header('Location: acceuil.php');
+        header('Location:/acceuil.php');
     } else {
         echo "Nom d'utilisateur ou mot de passe incorrect <br> <a href='index.php'>Retour à la page d'accueil</a>";
     }
