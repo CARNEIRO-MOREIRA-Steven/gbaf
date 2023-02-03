@@ -1,3 +1,9 @@
+<?php 
+require 'functions/auth.php';
+if(!est_connecte());
+header('Location:/index.php');
+exit();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

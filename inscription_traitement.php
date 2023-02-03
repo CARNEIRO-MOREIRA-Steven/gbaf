@@ -5,8 +5,8 @@ $check = $conn->prepare("SELECT nom, prenom, username FROM account WHERE usernam
 $check->execute(array($_POST['username']));
 $compte_user = $check->fetchAll();
 
-
-if($_POST['username']== $compte_user){
+ 
+if(count($compte_user)>0){
     echo "Cette Username est déjà utilisé <br> <a href='inscription.php'> Retour au formulaire d'inscription </a>";
 }else{
     $sql =$conn-> prepare('INSERT INTO account(nom , prenom, username, password, question, reponse) VALUES (?, ?, ?, ?, ?, ?)');
