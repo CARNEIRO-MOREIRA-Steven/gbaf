@@ -1,7 +1,8 @@
 .page{text-align: center;
 border-top: solid;
 padding: 30px;
-margin-top: 30px;}
+margin-top: 30px;
+font-size: 15px;}
 
 .header {
    
@@ -29,6 +30,37 @@ margin-top: 30px;}
     padding: 50px;
     font-size: 15px;
 }
+.connexion,
+.inscription {
+    text-align: center;
+    font-size: 25px;
+}
+
+fieldset {
+    border: solid;
+    margin: auto;
+    text-align: center;
+    width: 400px;
+    font-size: 20px;
+}
+
+legend {
+    border: solid;
+    vertical-align: middle;
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+button{
+    font-size: 15px;
+}
 @media screen and (max-width: 760px)
 
 /*Resposive Téléphone*/
@@ -41,4 +73,28 @@ margin-top: 30px;}
     .nom_compte {
         margin-top: 20px;
         margin-bottom: 10px;
-    }}
+    }
+    fieldset {
+        border: solid;
+        text-align: center;
+        margin: auto;
+        width: 150px;
+        font-size: 20px;
+    }
+
+    label,
+    input {
+        font-size: 20px;
+    }
+
+    .inscription,
+    .connexion {
+        font-size: 20px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
