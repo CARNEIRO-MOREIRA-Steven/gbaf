@@ -10,7 +10,6 @@
 <body>
 <?php include('extensions/header.php');
 ?>
-    <h1 class="inscription">Inscription</h1>
     <form method="post" action="inscription_traitement.php">
         <fieldset>
         <legend>Vos Coordonnées</legend>

@@ -22,6 +22,7 @@
 </select>
         <label>Réponse</label> : <input type="text" name="reponse" id="reponse" required><br></p>
         <input type="submit" value="Réinitialiser">
+        <button id="retour" onclick="window.location.href='index.php'">Retour</button>
  </fieldset>
 </form>
 </body>

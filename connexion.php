@@ -10,13 +10,13 @@
 <body>
 <?php include('extensions/header.php');
 ?>
-<h1 class="connexion">Connexion</h1>
     <form method="post" action="connexion_traitement.php" >
         <fieldset>
             <legend>Se connecter</legend>
         <label>Username</label> : <input type="text" name="username" required><br>
         <label>Password</label> : <input type="password" name="password" required><br>
         <input type="submit" value="Se connecter"><input type="reset" value="Effacer" />
+        <button id="retour" onclick="window.location.href='index.php'">Retour</button>
         <p>Mot de passe oublié? <a href="recuperation_mdp.php">Réinitialiser mon mot de passe.</a></p>
         <P>Si vous n'avez pas de conpte,crée en un <a href="inscription.php">ici.</a></p>
         </fieldset></form>

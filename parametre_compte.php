@@ -8,7 +8,7 @@ require('functions/auth.php')
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paramètre du compte</title>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 </head>
     <body>
     <?php include('extensions/header.php');
@@ -18,7 +18,6 @@ require('functions/auth.php')
         <legend>Vos Coordonnées</legend>
         <label>Nom</label> : <input type="text" name="nom" id="nom"required><br>
         <label>Prenom</label> : <input type="text" name="prenom" id="prenom"required><br>
-        <label>Username</label> : <input type="text" name="username" id="username"required><br>
         <label>Password</label> : <input type="password" name="password" id="password"required><br>
         <label>Question secrète</label> : 
 <select name="question" id="question-select">
@@ -28,6 +27,7 @@ require('functions/auth.php')
 </select>
         <label>Réponse</label> : <input type="text" name="reponse" id="reponse"required<br></p>
         <input type="submit" value="Modifier"> 
+        <button id="retour" onclick="window.location.href='acceuil.php'">Retour</button>
     </fieldset>
     </form>
     </body>
