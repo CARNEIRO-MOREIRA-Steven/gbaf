@@ -1,15 +1,10 @@
 <?php
 require('config.php');
 session_start();
-
-// Vérifiez l'authentification de l'utilisateur
-if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
-    exit;
-}
-
 // Récupérez les informations actuelles de l'utilisateur de la base de données
-$username = $_SESSION['username'];
+if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
 $stmt = $conn->prepare('SELECT nom, prenom, username, password, question, reponse FROM Account WHERE username = ?');
 $stmt->execute(array($username));
 $user = $stmt->fetch();
@@ -26,6 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $update->execute(array($nom, $prenom, $password, $question, $reponse, $username));
     
     // Confirmation de la mise à jour
-    echo '<div>Mise à jour réussie !</div>';
+    echo "<div>Mise à jour réussie !</div> <br> <a href='acceuil.php'>Retour à la page d'accueil</a>";
 }
 ?>

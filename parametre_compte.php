@@ -1,3 +1,6 @@
+<?php
+require('functions/auth.php')
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
