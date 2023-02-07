@@ -1,5 +1,7 @@
 <?php
-require('functions/auth.php')
+require_once('functions/auth.php');
+require('config.php');
+include_once('extensions/header.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,8 +14,6 @@ require('functions/auth.php')
 </head>
 
 <body>
-    <?php include('extensions/header.php');
-    ?>
     <main>
         <section>
             <div class="gbaf">
@@ -37,53 +37,43 @@ require('functions/auth.php')
                 (Chambre Des Entrepreneurs)</p>
         </section>
         <div class="conteneur">
-            <div class="element1">
-                <div class="divimg1"><img class="img1" src="img/formation_co.png" alt="Logo Formation&co"></div>
-                <div class="acteurtxt">
-                    <h3>Formation&co</h3>
-                    <p>Formation&co est une association française présente sur tout le territoire.</p>
-                </div>
-                <form action="formation_co.php">
-                    <button class="button1" type="submit">Lire la suite</button>
-                </form>
+        <?php
+// On se connecte à la BDD
+$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8",$username, $password);
+
+// On définit le mode exception d'erreur PDO
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// On prépare la requête SQL pour sélectionner tous les enregistrements de la table "acteur"
+$stmt = $conn->prepare("SELECT * FROM acteur");
+
+// On exécute la requête
+$stmt->execute();
+
+// On récupère les résultats de la requête sous forme de tableau associatif
+$acteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// On vérifie si on a récupéré des enregistrements
+if ($acteurs) {
+    foreach ($acteurs as $acteur) {
+        ?>
+        <div class="element">
+            <div class="divimg">
+                <img class="img1" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
             </div>
-            <section>
-            <div class="element2">
-                    <div class="divimg1"><img class="img1" src="img/protectpeople.png" alt="Logo Protectpeople"></div>
-                    <div class="acteurtxt">
-                        <h3>Protectpeople</h3>
-                        <p>Protectpeople finance la solidarité nationale.</p>
-                    </div>
-                    <form action="protectpeople.php">
-                        <button class="button1" type="submit">Lire la suite</button>
-                    </form>
-                </div>
-            </section>
-            <section>
-                <div class="element3">
-                    <div class="divimg1"><img class="img1" src="img/Dsa_france.png" alt="Logo Dsa France"></div>
-                    <div class="acteurtxt">
-                        <h3>Dsa France</h3>
-                        <p>Dsa France accélère la croissance du territoire et s'engage.</p>
-                    </div>
-                    <form action="dsa_france.php">
-                        <button class="button1" type="submit">Lire la suite</button>
-                    </form>
-                </div>
-            </section>
-            <section>
-                <div class="element4">
-                    <div class="divimg1"><img class="img1" src="img/CDE.png" alt="Logo CDE"></div>
-                    <div class="acteurtxt">
-                        <h3>Chambre Des Entrepreneurs</h3>
-                        <p>La CDE (Chambre Des Entrepreneurs) accompagne les entreprises </p>
-                    </div>
-                    <form action="cde.php">
-                        <button class="button1" type="submit">Lire la suite</button>
-                    </form>
-                </div>
-            </section>
+            <div class="acteurtxt">
+                <h3><?php echo $acteur['acteur']; ?></h3>
+                <?php echo"<p>" . substr($acteur['description'],0,100)."..." ?></p>
+                <a href="organisme.php?id=<?php echo $acteur['id_acteur']; ?>"><button>Lire la suite</button></a>
+            </div>
         </div>
+        <?php
+    }
+} else {
+    echo 'Aucun enregistrement trouvé';
+}
+?>
+</div>
     </main>
 </body>
 <?php include('extensions/footer.php'); ?>
