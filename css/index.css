@@ -12,8 +12,9 @@ font-size: 15px;}
     
 }
 
-.nom_compte {
-    margin-top: 40px;
+.nom_compte {font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #logo {
@@ -53,8 +54,7 @@ label {
     font-size: 20px;
 }
 
-input {
-    font-size: 15px;
+input {font-size: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -79,11 +79,6 @@ button{
         text-align: center;
         margin: auto;
         width: 150px;
-        font-size: 20px;
-    }
-
-    label,
-    input {
         font-size: 20px;
     }
 
