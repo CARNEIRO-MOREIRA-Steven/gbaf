@@ -5,6 +5,7 @@ include_once('extensions/header.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,43 +38,30 @@ include_once('extensions/header.php');
                 (Chambre Des Entrepreneurs)</p>
         </section>
         <div class="conteneur">
-        <?php
-// On se connecte à la BDD
-$conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8",$username, $password);
-
-// On définit le mode exception d'erreur PDO
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// On prépare la requête SQL pour sélectionner tous les enregistrements de la table "acteur"
-$stmt = $conn->prepare("SELECT * FROM acteur");
-
-// On exécute la requête
-$stmt->execute();
-
-// On récupère les résultats de la requête sous forme de tableau associatif
-$acteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// On vérifie si on a récupéré des enregistrements
-if ($acteurs) {
-    foreach ($acteurs as $acteur) {
-        ?>
-        <div class="element">
-            <div class="divimg">
-                <img class="img1" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
-            </div>
-            <div class="acteurtxt">
-                <h3><?php echo $acteur['acteur']; ?></h3>
-                <?php echo"<p>" . substr($acteur['description'],0,100)."..." ?></p>
-                <a href="organisme.php?id=<?php echo $acteur['id_acteur']; ?>"><button>Lire la suite</button></a>
-            </div>
+            <?php
+            $stmt = $conn->prepare("SELECT * FROM acteur");
+            $stmt->execute();
+            $acteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($acteurs) {
+                foreach ($acteurs as $acteur) {
+            ?>
+                    <div class="element">
+                        <div class="divimg1">
+                            <img class="img1" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
+                        </div>
+                        <div class="acteurtxt">
+                            <h3><?php echo $acteur['acteur']; ?></h3>
+                            <?php echo "<p>" . substr($acteur['description'], 0, 80) . "..." ?></p>
+                            <a href="organisme.php?id=<?php echo $acteur['id_acteur']; ?>"><button>Lire la suite</button></a>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                echo 'Aucun enregistrement trouvé';
+            }
+            ?>
         </div>
-        <?php
-    }
-} else {
-    echo 'Aucun enregistrement trouvé';
-}
-?>
-</div>
     </main>
 </body>
 <?php include('extensions/footer.php'); ?>
