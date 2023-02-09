@@ -3,8 +3,12 @@
     border-top: solid 3px;
     border-bottom: solid 3px;
     margin-top: 20px;
+    padding-left: 20px;
 }
 
+.partenaires{
+    padding-left: 20px;
+}
 
 #logo {
     border: solid 3px;
@@ -20,14 +24,14 @@
     margin-right: 50px;
 }
 
-button {
+.acteur_btn{
+    margin: -10px;
     float: right;
+    border-radius: 5px;
 }
 
-.element1,
-.element2,
-.element3,
-.element4 {
+.element
+ {
     border: solid 3px;
     margin: 20px;
     padding: 20px;
@@ -36,7 +40,8 @@ button {
 }
 
 .img1 {
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-right: 5px;
 }
 
 .acteurtxt {
@@ -49,12 +54,10 @@ img {
     height: 60px;
 }
 
-.formation_co,
-.dsa_france,
-.protectpeople,
-.cde {
+
+.element2 {
     border: solid 3px;
-    margin: 20px;
+    margin: 30px;
     padding: 20px;
 
 }
@@ -80,10 +83,6 @@ ul {
     margin-top: 40px;
 }
 
-.divimg1 {
-
-    float: left;
-}
 
 .divimg2 {
     display: flex;
@@ -97,41 +96,35 @@ ul {
     height: 130px;
 }
 
-.txt_acteur {
+.acteurtxt2 {
     margin-top: 50px;
 }
 
-.comment_count {
+.comments {
     border: solid;
     display: block;
     font-size: 20px;
-    margin: 20px;
+    margin: 30px;
     padding: 20px;
 }
 
-.comment_section {
+.comments_section {
     border: solid 2px;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
 }
 
-.new_comment_btn {
+.groupe_btn{
     position: relative;
-    right: 100px;
-    bottom: 65px;
+    bottom: 30px;
+    float: right;
+    font-size: 15px;
 }
 
-.like-btn {
-    position: relative;
-    right: -90px;
-    bottom: 65px;
-}
 
-.dislike-btn {
-    position: relative;
-    right: -150px;
-    bottom: 65px;
+textarea{
+    width: 400px;
 }
 
 .footer {
@@ -140,33 +133,48 @@ ul {
     margin-top: 15px;
     padding: 50px;
     font-size: 15px;
+} .button1{margin: 10px;}
+
+.like_btn,
+.dislike_btn,
+.comments-btn{
+    text-decoration: none;
+    color: black;
+    float: right;
+    align-items: baseline;
+    margin: 2px;
+
+
 }
 
-
-@media screen and (max-width: 760px)
+@media screen and (max-width: 760px){
 
 /*Resposive Téléphone*/
-    {
+    
+ .acteur_btn{margin-right: 5px;}   
+
+        
     .conteneur {
         margin-left: 10px;
         margin-right: 10px;
 
     }
-
-    .element1,
-    .element2,
-    .element3,
-    .element4 {
+.element {
         margin: 10px;
         padding: 5px;
+        height: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+    text-overflow: ellipsis;
     }
 
     .img1 {
-        width: 300px;
+        width: 280px;;
         border: solid 3px;
         align-items: center;
         margin-top: 5px;
         margin-bottom: 5px;
+        white-space: nowrap;;
     }
 
     .divimg1 {
@@ -180,31 +188,17 @@ ul {
         bottom: 22px;
     }
 
-    .protectpeople {
+
+    .element2 {
         margin: 10px;
         padding: 5px;
     }
 
-    .formation_co {
-        margin: 10px;
-        padding: 5px;
-    }
-
-    .dsa_france {
-        margin: 10px;
-        padding: 5px;
-    }
-
-    .cde {
-        margin: 10px;
-        padding: 5px;
-    }
-
-    p {
+    p,ul {
         padding-bottom: 10px;
+        text-align: center;
     }
 
-    p,
     h3 {
         text-align: left;
     }
@@ -213,10 +207,6 @@ ul {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .nom_compte {
-        margin-top: 20px;
     }
 
     .new_comment_btn{
@@ -231,7 +221,7 @@ ul {
         bottom: 40px;
     }
     
-    .comment_count{
+    .comments{
         margin: 10px;
     }
 
@@ -241,17 +231,23 @@ ul {
 
 /*Responsive Tablette*/
     {
-
+    
+        .divimg1 {
+            float: left;
+        }
     h1,
     h2 {
         text-align: left;
+    }
+
+    p, ul {
+      padding-left: 30px;
     }
 
     .img1{margin-top: 20px;}
 
     main {
         border-bottom: solid;
-        padding: 15px;
     }
 
     .footer {
@@ -259,10 +255,7 @@ ul {
         font-size: 20px;
     }
 
-    .element1,.element2,.element3,.element4{
-        height: 100px;
-    }
-
+   
     .gbaf{
         margin-top: 0px
     }
@@ -271,7 +264,7 @@ ul {
 
 
 
-@media screen and(min-width:1024px)
+@media screen and (min-width:1024px) and (max-width:2000px)
 
 /*Responsive PC*/
     {
@@ -281,5 +274,7 @@ ul {
     p {
         text-align: left;
     }
-
+    .divimg1 {
+        float: left;
+    }
 }
