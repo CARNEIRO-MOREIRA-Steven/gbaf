@@ -33,34 +33,40 @@ include_once('extensions/header.php');
             </div>
         </section>
         <section>
+        <div class ="partenaires">
             <h2>Nos Acteurs partenaires</h2>
             <p>Parmi nos acteurs partanaires, vous pourrez retrouver : Formation&co, Protectpeople, Dsa France, La CDE
                 (Chambre Des Entrepreneurs)</p>
-        </section>
+        </div>
+            </section>
         <div class="conteneur">
-            <?php
-            $stmt = $conn->prepare("SELECT * FROM acteur");
-            $stmt->execute();
-            $acteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if ($acteurs) {
-                foreach ($acteurs as $acteur) {
-            ?>
-                    <div class="element">
-                        <div class="divimg1">
-                            <img class="img1" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
-                        </div>
-                        <div class="acteurtxt">
-                            <h3><?php echo $acteur['acteur']; ?></h3>
-                            <?php echo "<p>" . substr($acteur['description'], 0, 80) . "..." ?></p>
-                            <a href="organisme.php?id=<?php echo $acteur['id_acteur']; ?>"><button>Lire la suite</button></a>
-                        </div>
-                    </div>
-            <?php
-                }
-            } else {
-                echo 'Aucun enregistrement trouvé';
-            }
-            ?>
+        <?php
+$id_acteur = '';
+$stmt = $conn->prepare("SELECT * FROM acteur");
+$stmt->execute();
+$acteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($acteurs) {
+    foreach ($acteurs as $acteur) {
+        $id_acteur = $acteur['id_acteur'];
+        ?>
+        <div class="element">
+            <div class="divimg1">
+                <img class="img1" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
+            </div>
+            <div class="acteurtxt">
+                <h3><?php echo $acteur['acteur']; ?></h3>
+                <?php echo "<p>" . substr($acteur['description'], 0, 80) . "..." ?></p>
+                <a href="organisme.php?id=<?php echo $id_acteur; ?>"><button class="acteur_btn">Lire la suite</button></a>
+            </div>
+        </div>
+    <?php
+    }
+}
+?>
+
+
+
+
         </div>
     </main>
 </body>

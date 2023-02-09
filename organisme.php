@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Acteur</title>
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body>
@@ -25,12 +26,15 @@
 
     $acteur = $stmt->fetch(PDO::FETCH_ASSOC);
 
+   
     if ($acteur) {
         $stmt = $conn->prepare("SELECT COUNT(*) FROM post WHERE id_acteur = :id");
         $stmt->bindValue(':id', $id_acteur);
         $stmt->execute();
-        $count = $stmt->fetchColumn();
+        $comment_count = $stmt->fetchColumn();
+        
     ?>
+    
         <div class="element2">
             <div class="divimg2">
                 <img class="img_acteur" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
@@ -41,19 +45,20 @@
             </div>
         </div>
         <div class="comments">
-            <?php echo $count; ?><p>Commentaires</p>
+            <?php echo $comment_count . " " . "Commentaires"?>
             <form action="comments_traitement.php" method="post">
-                <textarea name="comment"></textarea>
-                <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
-                <input type="submit" value="Ajouter un commentaire">
-            </form>
+            <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
+            <input type="text" name="post" required><br>
+                <div class ="groupe_btn">
+                <button class="like_btn"><i class="fa fa-thumbs-up"></i></button>
+                <button class="dislike_btn"><i class="fa fa-thumbs-down"></i></button>
+                <a class="comments-btn" href="comments_traitement.php?id_acteur=<?php echo $id_acteur; ?>"><button type="submit" name="button_comments" > Ajouter un commentaire</button></a>
+        </div></form>
         </div>
     <?php
-    } else {
-        echo 'Aucun enregistrement trouvé';
     }
     ?>
-
+<?php include('extensions/footer.php'); ?>
 </body>
 
 </html>
