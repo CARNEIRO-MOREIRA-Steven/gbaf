@@ -54,11 +54,37 @@
                 <button class="dislike_btn"><i class="fa fa-thumbs-down"></i></button>
                 <a class="comments-btn" href="comments_traitement.php?id_acteur=<?php echo $id_acteur; ?>"><button type="submit" name="button_comments" > Ajouter un commentaire</button></a>
         </div></form>
-        </div>
     <?php
     }
     ?>
-<?php include('extensions/footer.php'); ?>
+<?php
+$stmt = $conn->prepare("SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE post.id_acteur = :id_acteur ORDER BY date_add DESC LIMIT 3");
+$stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+$stmt->execute();
+$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($posts) {
+    foreach ($posts as $post) {
+        ?>
+        <div class="">
+            <div class="prenom_comment">
+                <?php echo $post['prenom']; ?>
+            </div>
+            <div class="date_comment">
+                <?php echo $post['date_add']; ?>
+            </div>
+            <div class="post_comment">
+                <?php echo $post['post']; ?>
+            </div>
+        </div>
+        <?php
+    }
+} else {
+    echo 'Aucun commentaire';
+}
+?>
+        </div>
+
 </body>
 
 </html>
+<?php include('extensions/footer.php'); ?>
