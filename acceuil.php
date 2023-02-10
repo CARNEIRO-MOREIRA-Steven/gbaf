@@ -1,6 +1,6 @@
 <?php
 require_once('functions/auth.php');
-require('config.php');
+require('functions/config.php');
 include_once('extensions/header.php');
 ?>
 <!DOCTYPE html>

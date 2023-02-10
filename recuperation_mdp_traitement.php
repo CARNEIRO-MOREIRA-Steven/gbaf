@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('functions/config.php');
 try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8",$username, $password);
 } catch (PDOException $e) {

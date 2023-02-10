@@ -11,7 +11,7 @@
 <body>
     <?php
     require_once('functions/auth.php');
-    require_once('config.php');
+    require_once('functions/config.php');
     include('extensions/header.php');
     function is_logged_in()
     {

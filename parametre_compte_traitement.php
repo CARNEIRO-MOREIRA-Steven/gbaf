@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('functions/config.php');
 session_start();
 // Récupérez les informations actuelles de l'utilisateur de la base de données
 if(isset($_SESSION['username'])) {

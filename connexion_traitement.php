@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('functions/config.php');
 $check = $conn->prepare("SELECT id_user, username, password FROM account WHERE username=?");
 $result = $check->execute(array($_POST['username']));
 if (!$result) {
