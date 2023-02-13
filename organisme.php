@@ -60,22 +60,31 @@
 
         </form>
         <?php
-        if (is_logged_in()) {
-        ?>
-            <form action="vote_traitement.php" method="post">
-                <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
-                <input type="hidden" name="id_user" value="<?php echo $id_user; ?>"></button>
-                <button class="like_btn" type="submit" name="vote" value="1">
-                    <i id="id_like" class="fa fa-thumbs-up"></i>
-                </button>
-                <button class="dislike_btn" type="submit" name="vote" value="-1">
-                    <i id="dislike_btn" class="fa fa-thumbs-down"></i>
-                </button>
-            </form></div>
+if (is_logged_in()) {
+    // Compter le nombre de commentaires pour chaque acteur
+    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM post WHERE id_acteur = :id_acteur");
+    $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $comment_count = $result['count'];
+?>
+    <form action="vote_traitement.php" method="post">
+        <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
+        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+        <button class="like_btn" type="submit" name="vote" value="1">
+            <i id="id_like" class="fa fa-thumbs-up"></i>
+        </button>
+        <span class="vote_count"><?php echo $comment_count; ?></span>
+        <button class="dislike_btn" type="submit" name="vote" value="-1">
+            <i id="dislike_btn" class="fa fa-thumbs-down"></i>
+        </button>
+        
+    </form>
+</div>
 
-        <?php
-        }
-        ?>
+<?php
+}
+?>
         <?php
         $stmt = $conn->prepare("SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE post.id_acteur = :id_acteur ORDER BY date_add DESC LIMIT 3");
         $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);

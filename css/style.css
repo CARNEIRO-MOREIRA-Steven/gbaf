@@ -129,14 +129,15 @@ textarea{
 .footer {
     border-top: solid;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 30px;
     padding: 50px;
     font-size: 15px;
 } .button1{margin: 10px;}
 
 .like_btn,
 .dislike_btn,
-.comments-btn{
+.comments-btn,
+.vote_count{
     text-decoration: none;
     color: black;
     float: right;
@@ -145,15 +146,13 @@ textarea{
 }
 #id_like,
 #id_dislike {
-    transition: transform 0.3s;
+    transition: transform 0.5s;
 }
 #id_like:hover,
 #id_dislike:hover {
     transform: scale(1.3);
 
 }
-
-
 
 .afficher_commentaire {
     border-radius: 10px;
@@ -271,10 +270,11 @@ textarea{
 
     main {
         border-bottom: solid;
+        padding-bottom: 30px;
     }
 
     .footer {
-        margin-top: 50px;
+        margin-top: 70px;
         font-size: 20px;
     }
 
