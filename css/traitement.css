@@ -1,0 +1,41 @@
+#logo {
+    border: solid 3px;
+    height: 100px;
+    width: 100px;
+    margin: 30px;
+}
+
+.gbaf {
+    border-top: solid 3px;
+    border-bottom: solid 3px;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.nom_compte {
+    margin-top: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update_succes,
+.update_password,
+.new_password,
+.erreur_information,
+.update_inscription,
+.username_used,
+.already_comment,
+.already_vote,
+.bad_user,
+.modified_password{
+    text-align: center;
+    margin-top: 100px;
+    border: solid;
+    padding: 50px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}

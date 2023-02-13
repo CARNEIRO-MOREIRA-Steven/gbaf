@@ -1,6 +1,7 @@
 <?php
+include_once('extensions/header.php');
 require('functions/config.php');
-session_start();
+
 // Récupérez les informations actuelles de l'utilisateur de la base de données
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -21,6 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $update->execute(array($nom, $prenom, $password, $question, $reponse, $username));
     
     // Confirmation de la mise à jour
-    echo "<div>Mise à jour réussie !</div> <br> <a href='acceuil.php'>Retour à la page d'accueil</a>";
+    echo "<div class='update_succes'>Mise à jour réussie !<br> <a href='acceuil.php'>Retour à la page d'accueil</a></div> ";
 }
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+    <link href="css/traitement.css" rel="stylesheet">
+</head>

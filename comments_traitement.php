@@ -1,7 +1,7 @@
 <?php
 require_once('functions/config.php');
 require_once('functions/auth.php');
-
+include_once('extensions/header.php');
 try {
   $bdd = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8",$username, $password);
 } catch (PDOException $e) {
@@ -18,9 +18,9 @@ $stmt->execute();
 
 $existingPost = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($existingPost) {
-  die("Vous avez déjà publié un commentaire pour cet acteur.");
-} else {
+if($existingPost) 
+  echo "<div class='already_comment'>Vous avez déjà publié un commentaire pour cet acteur.<br/><button id='retour' onclick=window.location.href='acceuil.php'>Retour</button></div>";
+else {
 
   $post = $_POST['post'];
   if(!empty($post)) {
@@ -36,3 +36,14 @@ if($existingPost) {
     exit;
   } 
 }
+?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+    <link href="css/traitement.css" rel="stylesheet">
+</head>

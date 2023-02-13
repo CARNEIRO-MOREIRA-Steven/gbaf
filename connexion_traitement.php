@@ -1,5 +1,6 @@
 <?php
 require('functions/config.php');
+include_once('extensions/header.php');
 $check = $conn->prepare("SELECT id_user, username, password FROM account WHERE username=?");
 $result = $check->execute(array($_POST['username']));
 if (!$result) {
@@ -12,7 +13,17 @@ if (!$result) {
         $_SESSION['id_user'] = $compte_user['id_user'];
         header('Location:/acceuil.php');
     } else {
-        echo "Nom d'utilisateur ou mot de passe incorrect <br> <a href='index.php'>Retour à la page d'accueil</a>";
+        echo "<div class='bad_user'>Nom d'utilisateur ou mot de passe incorrect <br> <button id='retour' onclick=window.location.href='acceuil.php'>Retour</button></div>";
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+    <link href="css/traitement.css" rel="stylesheet">
+</head>
