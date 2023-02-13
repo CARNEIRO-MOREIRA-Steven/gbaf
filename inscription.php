@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['utilisateur'])) {
+  header('Location: /acceuil.php');
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
