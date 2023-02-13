@@ -12,6 +12,9 @@ include_once('extensions/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceuil</title>
     <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -55,7 +58,7 @@ if ($acteurs) {
             </div>
             <div class="acteurtxt">
                 <h3><?php echo $acteur['acteur']; ?></h3>
-                <?php echo "<p>" . substr($acteur['description'], 0, 80) . "..." ?></p>
+                <?php echo "<p class='acteurtxt'>" . substr($acteur['description'], 0, 45) . "..." ?></p>
                 <a href="organisme.php?id=<?php echo $id_acteur; ?>"><button class="acteur_btn">Lire la suite</button></a>
             </div>
         </div>

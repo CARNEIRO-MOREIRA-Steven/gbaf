@@ -37,7 +37,7 @@
     };
     $id_user = $_SESSION['id_user'];
     // Affichage des informations de l'acteur et des boutons de vote et commentaires
-    ?>
+    ?><div class='header_acteur'>
     <div class="element2">
         <div class="divimg2">
             <img class="img_acteur" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">
@@ -46,7 +46,7 @@
             <h3><?php echo $acteur['acteur']; ?></h3>
             <p><?php echo $acteur['description']; ?></p>
         </div>
-    </div>
+    </div></div>
     <div class="comments">
         <?php echo $comment_count . " " . "Commentaires"; ?>
         <div class="groupe_btn">
@@ -68,17 +68,17 @@ if (is_logged_in()) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $comment_count = $result['count'];
 
-    // Compter le nombre de votes pour chaque acteur
-$stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur");
-$stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-$vote_count = $result['count'];
+    // Compter le nombre de votes (like/dislike) pour chaque acteur
+    $stmt = $conn->prepare("SELECT SUM(vote) as total FROM vote WHERE id_acteur = :id_acteur");
+    $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $vote_count = $result['total'];
 ?>
     <form action="vote_traitement.php" method="post">
         <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
-        <button class="like_btn" type="submit" name="vote" value="1">
+        <button class="like_btn" type="submit" name="vote" value="">
             <i id="id_like" class="fa fa-thumbs-up"></i>
         </button>
         <span class="vote_count"><?php echo $vote_count; ?></span>
@@ -92,12 +92,10 @@ $vote_count = $result['count'];
 <?php
 }
 ?>
-<div class="comments">
-    <?php echo $comment_count . " " . "Commentaires"; ?>
+<div class="comments_user">
+    
 
-<?php
 
-?>
         <?php
         $stmt = $conn->prepare("SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE post.id_acteur = :id_acteur ORDER BY date_add DESC LIMIT 3");
         $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
@@ -124,7 +122,7 @@ $vote_count = $result['count'];
             echo 'Aucun commentaire';
         }
 ?>
- </div>
+ </div></div>
 </body>
 </html>
 <?php include('extensions/footer.php'); ?>

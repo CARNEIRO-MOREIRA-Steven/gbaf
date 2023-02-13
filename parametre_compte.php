@@ -24,7 +24,7 @@ require('functions/auth.php')
 	<option value="père">Nom de votre père</option>
 	<option value="animal">Nom de votre animal de compagnie</option>
 	<option value="ville">Ville de naissance</option>
-</select>
+</select><br/>
         <label>Réponse</label> : <input type="text" name="reponse" id="reponse"required<br></p>
         <input type="submit" value="Modifier"> 
         <button id="retour" onclick="window.location.href='acceuil.php'">Retour</button>

@@ -29,7 +29,7 @@ if(isset($_SESSION['utilisateur'])) {
 	<option value="père">Nom de votre père</option>
 	<option value="animal">Nom de votre animal de compagnie</option>
 	<option value="ville">Ville de naissance</option>
-</select>
+</select><br/>
         <label>Réponse</label> : <input type="text" name="reponse" id="reponse" required><br></p>
         <input type="submit" value="S'inscrire">
         <button id="retour" onclick="window.location.href='index.php'">Retour</button>

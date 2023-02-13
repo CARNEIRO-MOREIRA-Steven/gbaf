@@ -2,7 +2,8 @@
 border-top: solid;
 padding: 30px;
 margin-top: 30px;
-font-size: 15px;}
+font-size: 15px;
+font-family: 'Roboto', sans-serif;}
 
 .header {
    
@@ -16,6 +17,7 @@ font-size: 15px;}
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #logo {
@@ -31,11 +33,13 @@ font-size: 15px;}
     margin-top: 15px;
     padding: 50px;
     font-size: 15px;
+    font-family: 'Roboto', sans-serif;
 }
 .connexion,
 .inscription {
     text-align: center;
     font-size: 25px;
+    
 }
 
 fieldset {
@@ -44,6 +48,7 @@ fieldset {
     text-align: center;
     width: 400px;
     font-size: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 legend {
