@@ -10,10 +10,10 @@ if (session_status() == PHP_SESSION_NONE) {
   <div class="nom_compte ">  
     <?php
     if(isset($_SESSION['utilisateur'])) {
-        echo '<a href="parametre_compte.php">' . $_SESSION["utilisateur"]. '</a>' ;
+        echo '<a href="parametre_compte.php">' . $_SESSION["nom"] . ' ' . $_SESSION["prenom"] . '</a>' ;
         echo '<form method="post" action="functions/deconnexion.php">';
         echo '<input type="submit" name="deconnexion" value="Déconnexion">';
-        echo '</form>';
+        echo '</form></div>';
     } else {
         
     }

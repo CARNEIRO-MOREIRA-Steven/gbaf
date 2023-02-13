@@ -1,7 +1,7 @@
 <?php
 require('functions/config.php');
 include_once('extensions/header.php');
-$check = $conn->prepare("SELECT id_user, username, password FROM account WHERE username=?");
+$check = $conn->prepare("SELECT id_user, username, nom, prenom, password FROM account WHERE username=?");
 $result = $check->execute(array($_POST['username']));
 if (!$result) {
     echo 'Erreur lors de l\'exécution de la requête : ' . print_r($check->errorInfo(), true);
@@ -11,6 +11,8 @@ if (!$result) {
         session_start();
         $_SESSION['utilisateur'] = $_POST['username'];
         $_SESSION['id_user'] = $compte_user['id_user'];
+        $_SESSION['nom'] = $compte_user['nom'];
+        $_SESSION['prenom'] = $compte_user['prenom'];
         header('Location:/acceuil.php');
     } else {
         echo "<div class='bad_user'>Nom d'utilisateur ou mot de passe incorrect <br> <button id='retour' onclick=window.location.href='acceuil.php'>Retour</button></div>";
