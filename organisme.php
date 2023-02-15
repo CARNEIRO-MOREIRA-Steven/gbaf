@@ -68,20 +68,25 @@ if (is_logged_in()) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $comment_count = $result['count'];
 
-    // Compter le nombre de votes (like/dislike) pour chaque acteur
-    $stmt = $conn->prepare("SELECT SUM(vote) as total FROM vote WHERE id_acteur = :id_acteur");
+    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 1");
     $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $vote_count = $result['total'];
+    $like_count = $result['count'];
+    
+    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 0");
+    $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $dislike_count = $result['count'];
 ?>
     <form action="vote_traitement.php" method="post">
         <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
-        <button class="like_btn" type="submit" name="vote" value="">
+        <button class="like_btn" type="submit" name="vote" value="1">
             <i id="id_like" class="fa fa-thumbs-up"></i>
         </button>
-        <span class="vote_count"><?php echo $vote_count; ?></span>
+        <span class="vote_count"><?php echo $like_count + $dislike_count; ?></span>
         <button class="dislike_btn" type="submit" name="vote" value="0">
             <i id="dislike_btn" class="fa fa-thumbs-down"></i>
         </button>
