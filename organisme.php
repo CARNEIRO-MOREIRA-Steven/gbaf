@@ -25,16 +25,28 @@
     $stmt->bindValue(':id', $id_acteur);
     $stmt->execute();
     $acteur = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Si l'acteur a été trouvé
-    if ($acteur) {
-        // Récupération du nombre de commentaires pour l'acteur
-        $stmt = $conn->prepare("SELECT COUNT(*) FROM post WHERE id_acteur = :id_acteur");
-        $stmt->bindValue(':id_acteur', $id_acteur);
-        $stmt->execute();
-        $comment_count = $stmt->fetchColumn();
-    };
     $id_user = $_SESSION['id_user'];
+    if (is_logged_in()) {
+        // Compter le nombre de commentaires pour chaque acteur
+        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM post WHERE id_acteur = :id_acteur");
+        $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $comment_count = $result['count'];
+        //On va chercher le nombre de like dans la BDD
+        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 1");
+        $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $like_count = $result['count'];
+        //On va chercher le nombre de dislike dans la BDD
+        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 0");
+        $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dislike_count = $result['count'];
+    }
+  
     // Affichage des informations de l'acteur et des boutons de vote et commentaires
     ?><div class='header_acteur'>
     <div class="element2">
@@ -47,9 +59,10 @@
         </div>
     </div></div>
     <div class="comments">
-        <?php echo $comment_count . " " . "Commentaires"; ?>
+        <?php echo $comment_count . " " . "Commentaires"; //Affichage du nombre de commentaire?>
         <div class="groupe_btn">
         <form action="comments_traitement.php" method="post">
+            <!--Formualire pour le traitement des commentaire-->
             <div class="zone_commentaire">
             <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
             <input placeholder="Nouveau commentaire" type="text" name="post" required><br> </div>
@@ -58,34 +71,14 @@
                 </a>
 
         </form>
-        <?php
-if (is_logged_in()) {
-    // Compter le nombre de commentaires pour chaque acteur
-    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM post WHERE id_acteur = :id_acteur");
-    $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $comment_count = $result['count'];
 
-    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 1");
-    $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $like_count = $result['count'];
-    
-    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 0");
-    $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $dislike_count = $result['count'];
-?>
-    <form action="vote_traitement.php" method="post">
+    <form action="vote_traitement.php" method="post"><!--Formulaire de vote par acteur et par rapport a l'id_user-->
         <input type="hidden" name="id_acteur" value="<?php echo $id_acteur; ?>">
         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
         <button class="like_btn" type="submit" name="vote" value="1">
             <i id="id_like" class="fa fa-thumbs-up"></i>
         </button>
-        <span class="vote_count"><?php echo $like_count + $dislike_count; ?></span>
+        <span class="vote_count"><?php echo $like_count + $dislike_count; ?></span> <!-- Compteur de like additionant dislike et like -->
         <button class="dislike_btn" type="submit" name="vote" value="0">
             <i id="dislike_btn" class="fa fa-thumbs-down"></i>
         </button>
@@ -93,14 +86,11 @@ if (is_logged_in()) {
     </form>
 </div>
 
-<?php
-}
-?>
 <div class="comments_user">
     
 
 
-        <?php
+        <?php //Nous allons chercher les commentaires poster par id_acteurs et par id_user dans la BDD
         $stmt = $conn->prepare("SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE post.id_acteur = :id_acteur ORDER BY date_add DESC LIMIT 3");
         $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
         $stmt->execute();
@@ -123,7 +113,6 @@ if (is_logged_in()) {
 <?php
             }
         } else {
-            echo 'Aucun commentaire';
         }
 ?>
  </div></div>
