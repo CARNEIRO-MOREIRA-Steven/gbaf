@@ -1,13 +1,9 @@
 <?php
 include_once('extensions/header.php');
 require('functions/config.php');
-
 // Récupérez les informations actuelles de l'utilisateur de la base de données
-if(isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-}
-$stmt = $conn->prepare('SELECT nom, prenom, username, password, question, reponse FROM Account WHERE username = ?');
-$stmt->execute(array($username));
+$stmt = $conn->prepare('SELECT nom, prenom, username, password, question, reponse FROM Account WHERE id_user = ?');
+$stmt->execute(array($_SESSION['id_user']));
 $user = $stmt->fetch();
 
 // Traitement des mises à jour
@@ -18,12 +14,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $question = implode([$_POST['question']]);
     $reponse = strip_tags($_POST['reponse']);
     
-    $update = $conn->prepare('UPDATE Account SET nom = ?, prenom = ?, password = ?, question = ?, reponse = ? WHERE username = ?');
-    $update->execute(array($nom, $prenom, $password, $question, $reponse, $username));
+    $update = $conn->prepare('UPDATE Account SET nom = ?, prenom = ?, password = ?, question = ?, reponse = ? WHERE id_user = ?');
+    $update->execute(array($nom, $prenom, $password, $question, $reponse, $_SESSION['id_user']));
     
     // Confirmation de la mise à jour
     echo "<div class='update_succes'>Mise à jour réussie !<br> <a href='acceuil.php'>Retour à la page d'accueil</a></div> ";
 }
+//On met a jour les informations nom et prénom dans la variable seesion pour que le nom et prenom se changent dans le header
+$nouveauNom = strip_tags($_POST['nom']);
+$nouveauPrenom = strip_tags($_POST['prenom']);
+$_SESSION['nom'] = $nouveauNom;
+$_SESSION['prenom'] = $nouveauPrenom;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
