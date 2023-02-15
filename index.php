@@ -15,20 +15,18 @@ if(isset($_SESSION['utilisateur'])) {
     </head>
  
   <body>
-    <header>
       <?php include 'extensions/header.php'; ?>
-    </header>
 
     <div class="page">
       <h1>Bienvenue sur l'extranet de GBAF</h1>
         <div id="home">
           <div id="inscription">
             <p>Si vous ne possédez pas encore de compte, veuillez cliquer ci-dessous afin de vous enregistrer pour avoir accès au service proposé par l'extranet</p>
-            <button><a href="inscription.php">S'inscrire</a></button>
+            <button onclick="window.location. href ='inscription.php'">S'inscrire</button>
           </div> 
           <div id="connexion"> 
             <p>Si vous possédez déjà un compte, connectez-vous ci-dessous afin d'accéder à votre page d'accueil utilisateur</p>
-            <button><a href="connexion.php">Se connecter</a></button>
+            <button onclick="window.location. href ='connexion.php'">Se connecter</button>
             <button id="reset" onclick="window.location.href = 'recuperation_mdp.php'">J'ai oublié mon mot de passe</button>
           </div>
         </div>
