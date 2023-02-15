@@ -23,7 +23,7 @@ include_once('extensions/header.php');
             <div class="gbaf">
                 <h1>GBAF</h1>
                 <p>Bienvenue sur le Groupement Banque-Assurance Français GBAF qui est une fédération représentant les 6
-                    grands groupes français :
+                    grands groupes français :</p>
                 <ul>
                     <li>BNP Paribas</li>
                     <li>BPCE</li>
@@ -32,7 +32,6 @@ include_once('extensions/header.php');
                     <li>Société Générale</li>
                     <li>La Banque Postale</li>
                 </ul>
-                </p>
             </div>
         </section>
         <section>
@@ -40,8 +39,8 @@ include_once('extensions/header.php');
             <h2>Nos Acteurs partenaires</h2>
             <p>Parmi nos acteurs partanaires, vous pourrez retrouver : Formation&co, Protectpeople, Dsa France, La CDE
                 (Chambre Des Entrepreneurs)</p>
-        </div>
-            </section>
+            </div>
+        </section>
         <div class="conteneur">
         <?php
 $id_acteur = '';
