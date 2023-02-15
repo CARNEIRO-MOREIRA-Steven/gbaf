@@ -20,14 +20,14 @@ if(isset($_SESSION['utilisateur'])) {
 <form method="post" action="recuperation_mdp_traitement.php" >
  <fieldset>
             <legend>Réinitialisation mot de passe</legend>
-        <label>Username</label> : <input type="text" name="username"id="username" required><br>
+        <label>Username</label> : <input type="text" name="username" id="username" required><br>
         <label>Question secrète</label> : 
         <select name="question" id="question-select">
         <option value="père">Nom de votre père</option>
 	    <option value="animal">Nom de votre animal de compagnie</option>
 	    <option value="ville">Ville de naissance</option>
-</select><br/>
-        <label>Réponse</label> : <input type="text" name="reponse" id="reponse" required><br></p>
+</select><br>
+        <label>Réponse</label> : <input type="text" name="reponse" id="reponse" required><br>
         <input type="submit" value="Réinitialiser">
         <button id="retour" onclick="window.location.href='index.php'">Retour</button>
  </fieldset>
