@@ -43,12 +43,12 @@ include_once('extensions/header.php');
         </section>
         <div class="conteneur">
         <?php
-$id_acteur = '';
+$id_acteur = ''; //On va chercher les acteurs dans la BDD
 $stmt = $conn->prepare("SELECT * FROM acteur");
 $stmt->execute();
 $acteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($acteurs) {
-    foreach ($acteurs as $acteur) {
+    foreach ($acteurs as $acteur) { //Boucle acteurs
         $id_acteur = $acteur['id_acteur'];
         ?>
         <div class="element">
