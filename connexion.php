@@ -18,7 +18,7 @@ if(isset($_SESSION['utilisateur'])) {
 <?php include('extensions/header.php');
 ?>
     <form method="post" action="connexion_traitement.php" >
-        <fieldset>
+        <fieldset> <!-- Formulaire de connexion-->
             <legend>Se connecter</legend>
         <label>Username</label> : <input type="text" name="username" required><br>
         <label>Password</label> : <input type="password" name="password" required><br>

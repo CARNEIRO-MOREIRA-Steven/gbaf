@@ -16,7 +16,7 @@ if(isset($_SESSION['utilisateur'])) {
 </head>
 <body>
 <?php include('extensions/header.php');
-?>
+?> <!--Formulaire de traitement d'inscription-->
     <form method="post" action="inscription_traitement.php">
         <fieldset>
         <legend>Vos Coordonnées</legend>

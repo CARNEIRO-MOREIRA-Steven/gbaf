@@ -18,7 +18,7 @@ if(isset($_SESSION['utilisateur'])) {
 <?php include('extensions/header.php');
 ?>
 <form method="post" action="recuperation_mdp_traitement.php" >
- <fieldset>
+ <fieldset>   <!--Formulaire pour réinitialisé le mdp en cas d'oublie-->
             <legend>Réinitialisation mot de passe</legend>
         <label>Username</label> : <input type="text" name="username" id="username" required><br>
         <label>Question secrète</label> : 

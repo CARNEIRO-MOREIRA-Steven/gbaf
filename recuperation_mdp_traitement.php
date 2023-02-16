@@ -5,7 +5,7 @@ try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname;charset=UTF8",$username, $password);
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
-}
+}// Récupérez les informations actuelles de l'utilisateur de la base de données
 if (isset($_POST['username'], $_POST['question'], $_POST['reponse'])) {
     $username = $_POST['username'];
     $question = $_POST['question'];
@@ -17,7 +17,7 @@ if (isset($_POST['username'], $_POST['question'], $_POST['reponse'])) {
     $stmt->bindParam(':question', $question);
     $stmt->bindParam(':reponse', $reponse);
     $stmt->execute();
-
+//On vérifie que les informations corresponde avec celle enregistré
     if ($stmt->rowCount() > 0) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         // les informations sont correctes, nous pouvons mettre à jour le mot de passe
