@@ -12,7 +12,7 @@ require('functions/auth.php')
 </head>
     <body>
     <?php include('extensions/header.php');
-?>
+?> <!--Formulaire de traitement des modifications personelles-->
     <form method="post" action="parametre_compte_traitement.php">
         <fieldset>
         <legend>Vos Coordonnées</legend>
