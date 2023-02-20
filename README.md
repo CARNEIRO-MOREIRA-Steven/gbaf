@@ -31,7 +31,7 @@ CARNEIRO MOREIRA Steven
 
 2-Assurez-vous que l'extention PDO est bien présente et active (dans PHPINFO sur MAMP/WAMP/XAMPP).
 
-3-Téléchargez le dossier projet-extranet-gbaf et placez-le :
+3-Téléchargez le dossier gbaf et placez-le :
 
     -dans  C:\MAMP\htdocs  sous Windows ;
     
