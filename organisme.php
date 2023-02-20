@@ -41,7 +41,7 @@
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $like_count = $result['count'];
         //On va chercher le nombre de dislike dans la BDD
-        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = 0");
+        $stmt = $conn->prepare("SELECT COUNT(*) as count FROM vote WHERE id_acteur = :id_acteur AND vote = -1");
         $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -79,8 +79,8 @@
         <button class="like_btn" type="submit" name="vote" value="1">
             <i id="id_like" class="fa fa-thumbs-up"></i>
         </button>
-        <span class="vote_count"><?php echo $like_count + $dislike_count; ?></span> <!-- Compteur de like additionant dislike et like -->
-        <button class="dislike_btn" type="submit" name="vote" value="0">
+        <span class="vote_count"><?php echo $like_count - $dislike_count; ?></span> <!-- Compteur de like additionant dislike et like -->
+        <button class="dislike_btn" type="submit" name="vote" value="-1">
             <i id="dislike_btn" class="fa fa-thumbs-down"></i>
         </button>
         
@@ -92,7 +92,7 @@
 
 
         <?php //Nous allons chercher les commentaires poster par id_acteurs et par id_user dans la BDD
-        $stmt = $conn->prepare("SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE post.id_acteur = :id_acteur ORDER BY date_add DESC LIMIT 3");
+        $stmt = $conn->prepare("SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE post.id_acteur = :id_acteur ORDER BY date_add ");
         $stmt->bindParam(':id_acteur', $id_acteur, PDO::PARAM_INT);
         $stmt->execute();
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
