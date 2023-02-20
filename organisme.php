@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<div class='header_acteur'>
     <?php
     require_once('functions/auth.php');
     require_once('functions/config.php');
@@ -48,7 +49,7 @@
     }
   
     // Affichage des informations de l'acteur et des boutons de vote et commentaires
-    ?><div class='header_acteur'>
+    ?>
     <div class="element2">
         <div class="divimg2">
             <img class="img_acteur" src="<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>">

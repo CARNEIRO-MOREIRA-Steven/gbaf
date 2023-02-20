@@ -14,6 +14,8 @@
 
 .nom_compte {
     margin-top: 40px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header {
