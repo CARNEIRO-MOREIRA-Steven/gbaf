@@ -49,4 +49,4 @@ Vous pourrez changer ce répertoire par défaut si besoin dans les préférences
       
     -$username et $password : ils permettent de vous identifier. Renseignez-vous auprès de votre hébergeur pour les connaître (Sur MAMP, la valeur de l'identifiant et du mot de passe est la même : root).
 
-6-Lancez MAMP/WAMP/XAMPP, rendez-vous dans MY WEBSITE puis index.php (http://localhost:8888/gnarf/index.php) et dans TOOLS/PHPMYADMIN pour travailler sur la BDD : et c'est parti !
+6-Lancez MAMP/WAMP/XAMPP, rendez-vous dans MY WEBSITE puis index.php (http://localhost:8888/gbaf/index.php) et dans TOOLS/PHPMYADMIN pour travailler sur la BDD : et c'est parti !
